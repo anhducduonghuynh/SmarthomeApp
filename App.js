@@ -1,20 +1,26 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
-import Login from './components/Login';
+import { creatAppContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
 
-export default function App() {
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-      <Login/>
-  );
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
+export default App;

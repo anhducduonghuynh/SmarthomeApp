@@ -9,9 +9,9 @@ import {View, Text, StyleSheet, FlatList,
   AsyncStorage} from 'react-native'
 import {Card, FAB} from 'react-native-paper'
 import { StatusBar } from "expo-status-bar";
-import { BASE_URL } from './meta';
+import { BASE_URL } from '../link_api/meta';
 
-function Login() {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -30,6 +30,7 @@ function Login() {
       console.log(JSON.stringify(jsonData));
       if(jsonData['result'] == true){
         alert("You are: "+jsonData['user']);
+        navigation.navigate('Home', jsonData)
       }
       else{
         alert("Wrong username or password. Try again");
